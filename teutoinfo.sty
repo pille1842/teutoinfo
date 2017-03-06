@@ -49,9 +49,15 @@
 
 % Für Überschriften-Rahmen
 \RequirePackage[framemethod=TikZ]{mdframed}
-% Stil definieren: 0,8pt äußerer Rahmen
+% Stil definieren: 0,8pt äußerer Rahmen für Überschriften
 \mdfdefinestyle{TisecFrame}{%
     outerlinewidth=0.8pt}
+% Stil definieren für Zitate (\blockquote)
+\mdfdefinestyle{BlockquoteFrame}{%
+    topline=false,%
+    bottomline=false,%
+    outerlinewidth=2pt,%
+    outerlinecolor=lightgray}
 
 % Für Mehrspaltigkeit
 \RequirePackage{multicol}
@@ -59,6 +65,9 @@
 \setlength{\columnsep}{1cm}
 % 0,4pt dicke Linie zwischen Spalten zeichnen
 \setlength{\columnseprule}{0.4pt}
+
+% Absatzeinrückung abschalten
+\setlength{\parindent}{0mm}
 
 % Definiere Befehl: \TEUTOINFO
 \newcommand{\TEUTOINFO}{\textsc{Teuto-Info}}
@@ -78,6 +87,17 @@
 
 % Definiere Befehl: \vulgo
 \newcommand{\vulgo}{\~v. }
+
+% Definiere Befehl: \blockquote
+\newcommand{\blockquote}[2]{%
+    \begin{mdframed}[style=BlockquoteFrame]
+        \textit{#1}
+
+        \begin{flushright}
+            -- #2
+        \end{flushright}
+    \end{mdframed}
+}
 
 % Benutzerdefinierter Seitenkopf und -fuß
 \RequirePackage{fancyhdr}
