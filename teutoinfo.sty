@@ -1,0 +1,109 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% teutoinfo.sty -- Paket zum Erzeugen von Teuto-Infos
+%
+% Einbinden mit:
+%   \usepackage[issue=N,month=Monat,shortyear=YY,longyear=YYYY]
+% Optionen:
+%   issue       Lfd. Nummer der Ausgabe in diesem Jahr (z.B. 2)
+%   month       Name des Monats (z.B. April)
+%   shortyear   Kurzform des Jahres für Anzeige "Nr. N/YY"
+%   longyear    Langform des Jahres für Anzeige "Monat YYYY"
+%
+% Dieses Paket definiert die folgenden Befehle zur Verwendung im Dokument:
+%
+% \TEUTOINFO
+%       Gibt die Zeichenkette "Teuto-Info" in Kapitälchen aus
+% \INFO
+%       Gibt die Zeichenkette "Info" in Kapitälchen aus
+% \vulgo
+%       Gibt "v." mit Tilde über dem "v" aus (vulgo)
+% \tisec{Überschrift}
+%       Stellt eine eingerahmte Überschrift dar
+% \theissue
+%       Gibt die lfd. Nr. der Ausgabe aus (Parameter issue)
+% \themonth
+%       Gibt den Monat der Ausgabe aus (Parameter month)
+% \theshortyear
+%       Gibt die Kurzform des Ausgabejahres aus (Parameter shortyear)
+% \thelongyear
+%       Gibt die Langform des Ausgabejahres aus (Parameter longyear)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copyright 2017 Eric Haberstroh <eric@erixpage.de>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\NeedsTeXFormat{LaTeX2e}[1994/06/01]
+\ProvidesPackage{teutoinfo}[2017/03/01 Teuto-Info]
+
+% UTF-8 Kodierung
+\RequirePackage[utf8]{inputenc}
+
+% Neue deutsche Rechtschreibung
+\RequirePackage[ngerman]{babel}
+
+% Seitenränder: 2,5cm oben/unten, 2cm links/rechts
+\RequirePackage[top=2.5cm,left=2cm,right=2cm,bottom=2.5cm]{geometry}
+
+% Für Schattenboxen und ähnliches
+\RequirePackage{fancybox}
+
+% Für Überschriften-Rahmen
+\RequirePackage[framemethod=TikZ]{mdframed}
+% Stil definieren: 0,8pt äußerer Rahmen
+\mdfdefinestyle{TisecFrame}{%
+    outerlinewidth=0.8pt}
+
+% Für Mehrspaltigkeit
+\RequirePackage{multicol}
+% Abstand zwischen Spalten: 1cm
+\setlength{\columnsep}{1cm}
+% 0,4pt dicke Linie zwischen Spalten zeichnen
+\setlength{\columnseprule}{0.4pt}
+
+% Definiere Befehl: \TEUTOINFO
+\newcommand{\TEUTOINFO}{\textsc{Teuto-Info}}
+
+% Definiere Befehl: \INFO
+\newcommand{\INFO}{\textsc{Info}}
+
+% Definiere Befehl: \tisec
+\newcommand{\tisec}[1]{%
+    \begin{mdframed}[style=TisecFrame]
+        \centering  % Text mittig
+        \textsf{#1} % Serifenlose Schrift
+    \end{mdframed}
+}
+
+% Definiere Befehl: \vulgo
+\newcommand{\vulgo}{\~v. }
+
+% Benutzerdefinierter Seitenkopf und -fuß
+\RequirePackage{fancyhdr}
+\pagestyle{fancy}
+% Alle Header und Footer bereinigen
+\fancyhf{}
+% Oben mittig: Titel der Zeitschrift
+\fancyhead[C]{\TEUTOINFO{} -- Mitgliederzeitschrift der PV Teutonia 1842 zu Rastatt}
+% Ungerade Seite unten links: Seitennummer
+\fancyfoot[OL]{S. \thepage}
+% Ungerade Seite unten rechts: Nr. N/YY
+\fancyfoot[OR]{Nr. \theissue/\theshortyear}
+% Gerade Seite unten links: Monat YYYY
+\fancyfoot[EL]{\themonth{} \thelongyear}
+% Gerade Seite unten rechts: Seitennummer
+\fancyfoot[ER]{S. \thepage}
+% Unter Header und über Footer eine 0,4pt dicke Linie ziehen
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Paketoptionen definieren
+\RequirePackage{xkeyval}
+\define@key{teutoinfo.sty}{issue}{\newcommand{\theissue}{#1}}
+\define@key{teutoinfo.sty}{longyear}{\newcommand{\thelongyear}{#1}}
+\define@key{teutoinfo.sty}{shortyear}{\newcommand{\theshortyear}{#1}}
+\define@key{teutoinfo.sty}{month}{\newcommand{\themonth}{#1}}
+
+% Paketoptionen parsen
+\ProcessOptionsX
+
+% ENDE DER DATEI
