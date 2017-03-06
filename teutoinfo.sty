@@ -60,9 +60,6 @@
 % 0,4pt dicke Linie zwischen Spalten zeichnen
 \setlength{\columnseprule}{0.4pt}
 
-% Für Hyperlinks und andere Referenzen
-\RequirePackage{hyperref}
-
 % Definiere Befehl: \TEUTOINFO
 \newcommand{\TEUTOINFO}{\textsc{Teuto-Info}}
 
@@ -70,11 +67,13 @@
 \newcommand{\INFO}{\textsc{Info}}
 
 % Definiere Befehl: \tisec
-\newcommand{\tisec}[1]{%
+\newcommand{\tisec}[2]{%
     \begin{mdframed}[style=TisecFrame]
         \centering  % Text mittig
-        \textsf{#1} % Serifenlose Schrift
+        \textsf{#2} % Serifenlose Schrift
     \end{mdframed}
+    \label{#1}
+    \addcontentsline{toc}{section}{#2}
 }
 
 % Definiere Befehl: \vulgo
