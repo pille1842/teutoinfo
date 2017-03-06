@@ -14,7 +14,6 @@ Das Paket benötigt mindestens
     - fancybox
     - fancyhdr
     - geometry
-    - hyperref
     - inputenc (mit Kodierung utf-8)
     - mdframed
     - multicol
