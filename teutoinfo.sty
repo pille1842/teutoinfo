@@ -17,10 +17,12 @@
 %       Gibt die Zeichenkette "Info" in Kapitälchen aus
 % \vulgo
 %       Gibt "v." mit Tilde über dem "v" aus (vulgo)
-% \tisec{Überschrift}
+% \tisec{label}{Überschrift}
 %       Stellt eine eingerahmte Überschrift dar
+% \tisecn{label}{Überschrift}
+%       Wie \tisec, fügt aber keinen Eintrag zum Inhaltsverzeichnis hinzu
 % \blockquote{Zitat}{Quelle}
-%       fügt ein Zitat mit Rändern rechts/links ein
+%       Fügt ein Zitat mit Rändern rechts/links ein
 % \theissue
 %       Gibt die lfd. Nr. der Ausgabe aus (Parameter issue)
 % \themonth
@@ -35,7 +37,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{teutoinfo}[2017/03/01 Teuto-Info]
+\ProvidesPackage{teutoinfo}[2017/08/20 Teuto-Info]
 
 % UTF-8 Kodierung
 \RequirePackage[utf8]{inputenc}
@@ -84,12 +86,17 @@
 % Definiere Befehl: \INFO
 \newcommand{\INFO}{\textsc{Info}}
 
-% Definiere Befehl: \tisec
-\newcommand{\tisec}[2]{%
+% Definiere Befehl: \tisecn
+\newcommand{\tisecn}[2]{%
     \begin{mdframed}[style=TisecFrame]
         \centering  % Text mittig
         \textsf{#2} % Serifenlose Schrift
     \end{mdframed}
+}
+
+% Definiere Befehl: \tisec
+\newcommand{\tisec}[2]{%
+    \tisecn{#1}{#2}
     \label{#1}
     \addcontentsline{toc}{section}{#2}
 }
