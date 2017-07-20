@@ -71,6 +71,13 @@
 % Absatzeinrückung abschalten
 \setlength{\parindent}{0mm}
 
+% Ändere Überschrift des Inhaltsverzeichnisses
+\renewcommand{\contentsname}{In dieser Ausgabe}
+\addto\captionsngerman{%
+    \renewcommand{\contentsname}%
+    {In dieser Ausgabe}%
+}
+
 % Definiere Befehl: \TEUTOINFO
 \newcommand{\TEUTOINFO}{\textsc{Teuto-Info}}
 
