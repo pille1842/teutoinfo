@@ -1,8 +1,7 @@
 # teutoinfo - LaTeX-Paket zum Erzeugen von Teuto-Infos
 
 `teutoinfo` ist ein LaTeX-Paket zur Erzeugung von Teuto-Infos
-(Mitgliederzeitschrift der [PV Teutonia 1842 zu
-Rastatt](http://www.pv-teutonia.org/)).
+(Mitgliederzeitschrift der [PV Teutonia 1842 zu Rastatt](http://www.pv-teutonia.org/)).
 
 ## Systemvoraussetzungen
 
@@ -19,11 +18,16 @@ Das Paket benötigt mindestens
     - multicol
     - xkeyval
 
+Auf einem Ubuntu 16.04-System genügt hierfür die Installation von
+`texlive-latex-extra`, `texlive-lang-german` und allen Abhängigkeiten. Dazu
+müssen etwa 775 MB an Paketen heruntergeladen werden, die LaTeX-Installation ist
+dann etwa 1,2 GB groß.
+
 ## Installation
 
-Die Paketdatei `teutoinfo.sty` muss im selben Verzeichnis wie die TeX-Quelldatei
+Die Paketdatei `teutoinfo.sty` muss im selben Verzeichnis wie die Teuto-Info
 liegen, damit LaTeX sie findet. Alternativ kann sie auch in das Verzeichnis
-$TEXMFHOME gelegt werden (normalerweise ist das `~/texmf/`), und zwar auf den
+`$TEXMFHOME` gelegt werden (normalerweise ist das `~/texmf/`), und zwar auf den
 folgenden Pfad:
 
 ```
