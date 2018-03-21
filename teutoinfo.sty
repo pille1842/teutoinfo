@@ -2,12 +2,11 @@
 % teutoinfo.sty -- Paket zum Erzeugen von Teuto-Infos
 %
 % Einbinden mit:
-%   \usepackage[issue=N,month=Monat,shortyear=YY,longyear=YYYY]
+%   \usepackage[issue=N,month=Monat,year=YYYY]
 % Optionen:
 %   issue       Lfd. Nummer der Ausgabe in diesem Jahr (z.B. 2)
 %   month       Name des Monats (z.B. April)
-%   shortyear   Kurzform des Jahres für Anzeige "Nr. N/YY"
-%   longyear    Langform des Jahres für Anzeige "Monat YYYY"
+%   year        Jahr der Veröffentlichung (z.B. 2018)
 %
 % Dieses Paket definiert die folgenden Befehle zur Verwendung im Dokument:
 %
@@ -28,16 +27,16 @@
 % \themonth
 %       Gibt den Monat der Ausgabe aus (Parameter month)
 % \theshortyear
-%       Gibt die Kurzform des Ausgabejahres aus (Parameter shortyear)
+%       Gibt die Kurzform des Ausgabejahres aus (Parameter year)
 % \thelongyear
-%       Gibt die Langform des Ausgabejahres aus (Parameter longyear)
+%       Gibt die Langform des Ausgabejahres aus (Parameter year)
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright 2017 Eric Haberstroh <eric@erixpage.de>
+% Copyright 2018 Eric Haberstroh <eric@erixpage.de>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \NeedsTeXFormat{LaTeX2e}[1994/06/01]
-\ProvidesPackage{teutoinfo}[2017/08/20 Teuto-Info]
+\ProvidesPackage{teutoinfo}[2018/03/21 Teuto-Info]
 
 % UTF-8 Kodierung
 \RequirePackage[utf8]{inputenc}
@@ -69,6 +68,9 @@
 \setlength{\columnsep}{1cm}
 % 0,4pt dicke Linie zwischen Spalten zeichnen
 \setlength{\columnseprule}{0.4pt}
+
+% Für automatisches Abkürzen der Jahreszahl
+\RequirePackage{xstring}
 
 % Absatzeinrückung abschalten
 \setlength{\parindent}{0mm}
@@ -137,8 +139,7 @@
 % Paketoptionen definieren
 \RequirePackage{xkeyval}
 \define@key{teutoinfo.sty}{issue}{\newcommand{\theissue}{#1}}
-\define@key{teutoinfo.sty}{longyear}{\newcommand{\thelongyear}{#1}}
-\define@key{teutoinfo.sty}{shortyear}{\newcommand{\theshortyear}{#1}}
+\define@key{teutoinfo.sty}{year}{\newcommand{\thelongyear}{#1}\newcommand{\theshortyear}{\StrRight{#1}{2}}}
 \define@key{teutoinfo.sty}{month}{\newcommand{\themonth}{#1}}
 
 % Paketoptionen parsen

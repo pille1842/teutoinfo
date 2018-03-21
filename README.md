@@ -17,6 +17,7 @@ Das Paket benötigt mindestens
     - mdframed
     - multicol
     - xkeyval
+    - xstring
 
 Auf einem Ubuntu 16.04-System genügt hierfür die Installation von
 `texlive-latex-extra`, `texlive-lang-german` und allen Abhängigkeiten. Dazu
@@ -45,13 +46,12 @@ Liste von Variable/Wert-Paaren geliefert werden müssen (a=b,c=d,...):
 
 - `issue`: laufende Nummer der Ausgabe im derzeitigen Jahr
 - `month`: Name des Monats der Veröffentlichung
-- `shortyear`: Kurzform des Jahres für die Ausgabe "Nr. N/YY"
-- `longyear`: Langform des Jahres für die Ausgabe "Monat YYYY"
+- `year`: Jahr der Veröffentlichung
 
 Ein Beispiel für die Paketeinbindung:
 
 ```latex
-\usepackage[issue=2,month=April,shortyear=17,longyear=2017]{teutoinfo}
+\usepackage[issue=2,month=April,year=2018]{teutoinfo}
 ```
 
 ## Lizenz

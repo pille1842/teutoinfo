@@ -1,23 +1,23 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Beispieldokument für Paket teutoinfo
-% Copyright 2017 Eric Haberstroh <eric@erixpage.de>
+% Copyright 2018 Eric Haberstroh <eric@erixpage.de>
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \documentclass[a4paper,12pt,twoside]{article}
-\usepackage[issue=2,month=April,shortyear=17,longyear=2017]{teutoinfo}
+\usepackage[issue=2,month=April,year=2018]{teutoinfo}
 % Für Blindtexte
 \usepackage{lipsum}
 
 \begin{document}
     \begin{multicols}{2}
-        \tisec{Eine Überschrift}
+        \tisec{heading1}{Eine Überschrift}
         \lipsum
 
-        \tisec{Noch eine Überschrift\\mit zwei Zeilen!}
+        \tisec{anotherheading}{Noch eine Überschrift\\mit zwei Zeilen!}
         \lipsum
     \end{multicols}
 
-    \tisec{Überschrift über die ganze Breite}
+    \tisec{fullwidthheading}{Überschrift über die ganze Breite}
 
     \blockquote{Don't trust everything you read on the internet.}{Abraham Lincoln}
 
