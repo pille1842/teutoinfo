@@ -74,6 +74,7 @@
 
 % Absatzeinrückung abschalten
 \setlength{\parindent}{0mm}
+\setlength{\headheight}{15pt}
 
 % Ändere Überschrift des Inhaltsverzeichnisses
 \renewcommand{\contentsname}{In dieser Ausgabe}
@@ -122,16 +123,14 @@
 \pagestyle{fancy}
 % Alle Header und Footer bereinigen
 \fancyhf{}
-% Oben mittig: Titel der Zeitschrift
-\fancyhead[C]{\TEUTOINFO{} -- Mitgliederzeitschrift der PV Teutonia 1842 zu Rastatt}
-% Ungerade Seite unten links: Seitennummer
-\fancyfoot[OL]{S. \thepage}
-% Ungerade Seite unten rechts: Nr. N/YY
-\fancyfoot[OR]{Nr. \theissue/\theshortyear}
-% Gerade Seite unten links: Monat YYYY
-\fancyfoot[EL]{\themonth{} \thelongyear}
-% Gerade Seite unten rechts: Seitennummer
-\fancyfoot[ER]{S. \thepage}
+% Oben links: Titel der Zeitschrift
+\fancyhead[L]{\TEUTOINFO{} -- Mitgliederzeitschrift der PV Teutonia 1842 zu Rastatt}
+% Oben rechts: Nr. XX/JJJJ
+\fancyhead[R]{Nr. \theissue/\theshortyear}
+% Unten links: Monat YYYY
+\fancyfoot[L]{\themonth{} \thelongyear}
+% Unten rechts: Seitennummer
+\fancyfoot[R]{S. \thepage}
 % Unter Header und über Footer eine 0,4pt dicke Linie ziehen
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.4pt}
